@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css'
+import Header from './components/Header';
 
 function App() {
   const items = ['Apple', 'Banana', 'Cherry', 'Diamond', 'Elephant', 'Mango', 'Orange', 'Blueberry'];
+  const navigate = useNavigate();
   const tabs = [
     {id : 0, label : "Tab 1", content : <div>Apple<br/>This is Tab 1</div>},
     {id : 1, label : "Tab 2", content : <div>Banana<br/>This is Tab 2</div>},
@@ -18,13 +20,17 @@ function App() {
   ]
   return (
     <>
-      <TodoList/>
-      <DataFetcher/>
-      <Search items={ items }/>
-      <Dropdown items={ items }/>
-      <Tabs tabs = { tabs }/>
-      <StarRating/>
-      <Carousel images = { images }/>
+    <Header navigate={navigate}/>
+    <Routes>
+    <Route path="/" element=<p>여기는 메인...</p>/>
+      <Route path="/todo" element={<TodoList/>}/>
+      <Route path="/search" element={<Search items={ items }/>}/>
+      <Route path="/tabs" element={<Tabs tabs = { tabs }/>}/>
+      <Route path="/star" element={<StarRating/>}/>
+      <Route path="/data" element={ <DataFetcher/>}/>
+      <Route path="/data" element={ <Dropdown items={ items }/>}/>
+      <Route path="/img" element={ <Carousel images = { images }/>}/>
+    </Routes>
     </>
   )
 }
@@ -129,15 +135,20 @@ const Search = ({ items }) => {
 
 const DataFetcher = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const url = 'https://jsonmock.hackerrank.com/api/football_teams?league=English%20Premier%20League%20(EPL)';
   useEffect(()=>{
     fetch(url)
     .then(response => response.json())
     .then((data) => {
-      console.log(data.data);
       setData(data.data);
+      setLoading(false);
+    })
+    .catch((error)=>{
+      console.log(error);
     });
   }, []);
+  if (loading) return <p>Loading...</p>
   return (
     <>
     <ul>
