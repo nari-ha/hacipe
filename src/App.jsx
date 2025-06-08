@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
+import { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './App.css'
 
 function App() {
