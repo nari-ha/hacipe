@@ -7,6 +7,7 @@ function Header({ navigate }) {
         <button onClick={()=>navigate('/star')}>star</button>
         <button onClick={()=>navigate('/data')}>data</button>
         <button onClick={()=>navigate('/img')}>img</button>
+        <button onClick={()=>navigate('/practice')}>practice</button>
         </>
     )
 }

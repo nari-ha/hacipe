@@ -1,0 +1,50 @@
+{
+    "name": "recipe",
+    "recipes": [
+        {
+            "id": "1",
+            "name": "양배추 김 비빔밥",
+            "ingredients": [
+                {"name":"양배추", "quantity":"100g"},
+                {"name":"현미밥", "quantity":"150g"},
+                {"name":"두부", "quantity":"100g"},
+                {"name":"계란", "quantity":"1개"}
+            ],
+            "sauce": [
+                {"name":"참치액", "quantity":"1"},
+                {"name":"들기름", "quantity":"1"},
+                {"name":"간장", "quantity":"1"},
+                {"name":"굴소스", "quantity":"0.5"},
+                {"name":"알룰로스", "quantity":"1"}
+            ],
+            "steps": [
+                "양배추를 깍둑 썬다",
+                "현미밥 반 공기 위에 올리고", 
+                "두부 깍뚝에 간장 굴소스 알룰로스", 
+                "계란 넣고 파 올리고", 
+                "다 올려서 비벼 먹으면 끝"
+            ]
+        },
+        {
+            "id": "2",
+            "name": "참치 비빔밥",
+            "ingredients": [
+                {"name":"참치", "quantity":"100g"},
+                {"name":"현미밥", "quantity":"150g"},
+                {"name":"오이", "quantity":"1/3개"},
+                {"name":"계란", "quantity":"1개"}
+            ],
+            "sauce": [
+                {"name":"고추장", "quantity":"0.5"},
+                {"name":"마요네즈", "quantity":"0.5"},
+                {"name":"쯔유", "quantity":"1"},
+            ],
+            "steps": [
+                "오이와 상추를 잘 썬다",
+                "현미밥 반 공기 위에 올리고", 
+                "고추장, 마요네즈, 쯔유를 잘 섞고", 
+                "계란 올려 비비면 끝"
+            ]
+        }
+    ]
+}

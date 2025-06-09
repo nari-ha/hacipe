@@ -6,7 +6,7 @@ import Header from './components/Header';
 
 function App() {
   const items = ['Apple', 'Banana', 'Cherry', 'Diamond', 'Elephant', 'Mango', 'Orange', 'Blueberry'];
-  const navigate = useNavigate();
+  const nav = useNavigate();
   const tabs = [
     {id : 0, label : "Tab 1", content : <div>Apple<br/>This is Tab 1</div>},
     {id : 1, label : "Tab 2", content : <div>Banana<br/>This is Tab 2</div>},
@@ -18,19 +18,42 @@ function App() {
     'https://i.pinimg.com/736x/3b/11/49/3b11499e6dd90bb9290ace25a34ef3b3.jpg',
     'https://i.pinimg.com/736x/a6/c0/74/a6c074db2c8067f83601e48bf2db846f.jpg',
   ]
+  const str = "Hello I'm Nari";
+  const ret = str.split(" ");
+  console.log(ret);
+  const a = ret.join(' ');
+  console.log(a);
+  const b = tabs.find((e)=>e.label==='Tab 2');
+  console.log(b);
+  const c = tabs.findIndex((e)=>e.label==='Tab 2')
+  console.log(c);
+  const d = items.splice(2, 3);
+  console.log(d);
+
+
   return (
     <>
-    <Header navigate={navigate}/>
+    <Header navigate={nav}/>
     <Routes>
     <Route path="/" element=<p>여기는 메인...</p>/>
       <Route path="/todo" element={<TodoList/>}/>
-      <Route path="/search" element={<Search items={ items }/>}/>
-      <Route path="/tabs" element={<Tabs tabs = { tabs }/>}/>
-      <Route path="/star" element={<StarRating/>}/>
-      <Route path="/data" element={ <DataFetcher/>}/>
-      <Route path="/data" element={ <Dropdown items={ items }/>}/>
-      <Route path="/img" element={ <Carousel images = { images }/>}/>
     </Routes>
+    </>
+  )
+}
+
+const Practice = () => {
+  let [count, setCount] = useState(0);
+  let [age, setAge] = useState(20);
+  useEffect(()=>{
+    if ( count != 0 && count < 3) setAge(age+1);
+  }, [count])
+  return (
+    <>
+    <div>안녕하세요 전 {age}</div>
+    <button onClick = {()=>{
+      setCount(count + 1);
+      }}>누르면 한살 먹기</button>
     </>
   )
 }
@@ -58,7 +81,9 @@ const StarRating = ( {total = 5 }) => {
 }
 
 const Carousel = ({ images }) => {
+
   const [current, setCurrent] = useState(0);
+  const [show, setShow] = useState(true);
   const toNext = () => {
     if (current == images.length - 1) {
       setCurrent(0);
@@ -70,8 +95,15 @@ const Carousel = ({ images }) => {
     if (current == 0) setCurrent(images.length - 1);
     else setCurrent(current - 1);
   }
+  useEffect(()=>{
+    const a = setTimeout(()=>{setShow(false)}, 2000);
+    return ()=>{
+      clearTimeout(a);
+    }
+  }, [])
   return (
     <>
+    {show && <div>아직 2초 안지남</div>}
       <button onClick={()=>toPrevious()}>previous</button>
       <button onClick={()=>toNext()}>next</button>
       <div>
