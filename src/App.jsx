@@ -18,18 +18,16 @@ function App() {
     'https://i.pinimg.com/736x/3b/11/49/3b11499e6dd90bb9290ace25a34ef3b3.jpg',
     'https://i.pinimg.com/736x/a6/c0/74/a6c074db2c8067f83601e48bf2db846f.jpg',
   ]
-  const str = "Hello I'm Nari";
-  const ret = str.split(" ");
-  console.log(ret);
-  const a = ret.join(' ');
-  console.log(a);
-  const b = tabs.find((e)=>e.label==='Tab 2');
-  console.log(b);
-  const c = tabs.findIndex((e)=>e.label==='Tab 2')
-  console.log(c);
-  const d = items.splice(2, 3);
-  console.log(d);
-
+  useEffect(()=>{
+    fetch('https://raw.githubusercontent.com/nari-ha/hacipe/refs/heads/main/src/data.json')
+    .then((response)=>response.json())
+    .then((data)=>{
+      console.log(data);
+    })
+    .catch(err=>{
+      console.log("error: ",err);
+    })
+  })
 
   return (
     <>

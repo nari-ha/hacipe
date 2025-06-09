@@ -37,7 +37,7 @@
             "sauce": [
                 {"name":"고추장", "quantity":"0.5"},
                 {"name":"마요네즈", "quantity":"0.5"},
-                {"name":"쯔유", "quantity":"1"},
+                {"name":"쯔유", "quantity":"1"}
             ],
             "steps": [
                 "오이와 상추를 잘 썬다",
