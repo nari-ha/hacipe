@@ -22,7 +22,7 @@ function App() {
     fetch('https://raw.githubusercontent.com/nari-ha/hacipe/refs/heads/main/src/data.json')
     .then((response)=>response.json())
     .then((data)=>{
-      console.log(data);
+      console.log(data.recipes);
     })
     .catch(err=>{
       console.log("error: ",err);
